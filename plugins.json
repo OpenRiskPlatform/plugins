@@ -1,9 +1,9 @@
 {
   "$schema": "TODO",
-  "generatedAt": "2026-04-11T00:37:36Z",
+  "generatedAt": "2026-04-11T00:40:16Z",
   "plugins": [
     {
-      "path": "opensanctions/latest/plugin.json",
+      "path": "opensanctions/0.1.0/plugin.json",
       "versions": [
         "0.1.0"
       ],
