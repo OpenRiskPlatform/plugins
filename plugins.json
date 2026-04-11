@@ -1,5 +1,42 @@
 {
   "$schema": "TODO",
-  "generatedAt": "2026-04-11T00:26:55Z",
-  "plugins": []
+  "generatedAt": "2026-04-11T00:31:16Z",
+  "plugins": [
+    {
+      "path": "opensanctions/plugin.json",
+      "id": "opensanctions",
+      "version": "0.1.0",
+      "name": "OpenSanctions by OpenRiskPlatform",
+      "description": "Matches a person name against OpenSanctions and returns normalized person entities.",
+      "authors": [
+        {
+          "name": "Illia Chaban",
+          "email": "ic-it@mail.com"
+        },
+        {
+          "name": "Mykhailo Sichkaruk",
+          "email": "NA@NA.NA"
+        }
+      ],
+      "license": "MIT",
+      "main": "index.ts",
+      "entrypoints": [
+        {
+          "id": "match-persons",
+          "name": "Match Persons",
+          "description": "Matches a person name against OpenSanctions and returns normalized person entities.",
+          "function": "matchPersons",
+          "inputs": [
+            {
+              "name": "search_input",
+              "type": "string",
+              "optional": false,
+              "title": "Search Input",
+              "description": "Free-text person name to match against OpenSanctions."
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
