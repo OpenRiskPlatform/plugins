@@ -1,7 +1,473 @@
 {
   "$schema": "TODO",
-  "generatedAt": "2026-04-11T00:40:16Z",
+  "generatedAt": "2026-04-11T01:06:47Z",
   "plugins": [
+    {
+      "path": "adversea/0.1.5/plugin.json",
+      "versions": [
+        "0.1.5"
+      ],
+      "id": "adversea",
+      "version": "0.1.5",
+      "name": "Adversea",
+      "description": "Full Adversea integration covering all documented screening, entity recognition, and account endpoints.",
+      "authors": [
+        {
+          "name": "OpenRiskPlatform",
+          "email": "example@openrisk.platform"
+        }
+      ],
+      "license": "MIT",
+      "main": "index.ts",
+      "entrypoints": [
+        {
+          "id": "pep-sanctions",
+          "name": "PEP & Sanctions Check",
+          "description": "Checks PEP exposure and active sanctions datasets for the target name.",
+          "function": "pepSanctionsCheck",
+          "inputs": [
+            {
+              "name": "target",
+              "type": "string",
+              "optional": false,
+              "title": "Target Name",
+              "description": "Full name of the person or organization to screen."
+            },
+            {
+              "name": "force_recreate",
+              "type": "boolean",
+              "optional": true,
+              "title": "Force Recreate",
+              "description": "Bypass cache and refresh all response parts.",
+              "default": false
+            }
+          ]
+        },
+        {
+          "id": "topic-report",
+          "name": "Topic Report",
+          "description": "Adverse media analysis grouped by risk topics.",
+          "function": "topicReport",
+          "inputs": [
+            {
+              "name": "target",
+              "type": "string",
+              "optional": false,
+              "title": "Target Name",
+              "description": "Full name of the person or organization to screen."
+            },
+            {
+              "name": "output_language",
+              "type": {
+                "name": "enum",
+                "values": [
+                  "English",
+                  "Slovak"
+                ]
+              },
+              "optional": true,
+              "title": "Output Language",
+              "description": "Language for generated text output.",
+              "default": "English"
+            },
+            {
+              "name": "country",
+              "type": {
+                "name": "enum",
+                "values": [
+                  "usa",
+                  "australia",
+                  "new_zealand",
+                  "great_britain",
+                  "germany",
+                  "czechia",
+                  "slovakia",
+                  "italy",
+                  "austria",
+                  "belgium",
+                  "bulgaria",
+                  "croatia",
+                  "cyprus",
+                  "denmark",
+                  "estonia",
+                  "finland",
+                  "france",
+                  "greece",
+                  "hungary",
+                  "ireland",
+                  "latvia",
+                  "lithuania",
+                  "luxembourg",
+                  "malta",
+                  "netherlands",
+                  "poland",
+                  "portugal",
+                  "romania",
+                  "slovenia",
+                  "spain",
+                  "sweden"
+                ]
+              },
+              "optional": true,
+              "title": "Country",
+              "description": "Country of origin of websites used for screening. Increases accuracy."
+            },
+            {
+              "name": "force_recreate",
+              "type": "boolean",
+              "optional": true,
+              "title": "Force Recreate",
+              "description": "Bypass cache and refresh all response parts.",
+              "default": false
+            }
+          ]
+        },
+        {
+          "id": "social-media",
+          "name": "Social Media",
+          "description": "Finds public social media profiles matching the target name.",
+          "function": "socialMediaCheck",
+          "inputs": [
+            {
+              "name": "target",
+              "type": "string",
+              "optional": false,
+              "title": "Target Name",
+              "description": "Full name of the person or organization to screen."
+            },
+            {
+              "name": "force_recreate",
+              "type": "boolean",
+              "optional": true,
+              "title": "Force Recreate",
+              "description": "Bypass cache and refresh all response parts.",
+              "default": false
+            }
+          ]
+        },
+        {
+          "id": "unit-analysis",
+          "name": "Unit Analysis",
+          "description": "Analyzes search engine results for each URL. Mode text returns concise text; mode claims returns atomic facts.",
+          "function": "unitAnalysis",
+          "inputs": [
+            {
+              "name": "target",
+              "type": "string",
+              "optional": false,
+              "title": "Target Name",
+              "description": "Name of the screened person or company."
+            },
+            {
+              "name": "mode",
+              "type": {
+                "name": "enum",
+                "values": [
+                  "text",
+                  "claims"
+                ]
+              },
+              "optional": true,
+              "title": "Mode",
+              "description": "text = concise analysis per URL; claims = atomic facts per URL.",
+              "default": "text"
+            },
+            {
+              "name": "output_language",
+              "type": {
+                "name": "enum",
+                "values": [
+                  "English",
+                  "Slovak"
+                ]
+              },
+              "optional": true,
+              "title": "Output Language",
+              "description": "Language for generated text.",
+              "default": "English"
+            },
+            {
+              "name": "country",
+              "type": {
+                "name": "enum",
+                "values": [
+                  "usa",
+                  "australia",
+                  "new_zealand",
+                  "great_britain",
+                  "germany",
+                  "czechia",
+                  "slovakia",
+                  "italy",
+                  "austria",
+                  "belgium",
+                  "bulgaria",
+                  "croatia",
+                  "cyprus",
+                  "denmark",
+                  "estonia",
+                  "finland",
+                  "france",
+                  "greece",
+                  "hungary",
+                  "ireland",
+                  "latvia",
+                  "lithuania",
+                  "luxembourg",
+                  "malta",
+                  "netherlands",
+                  "poland",
+                  "portugal",
+                  "romania",
+                  "slovenia",
+                  "spain",
+                  "sweden"
+                ]
+              },
+              "optional": true,
+              "title": "Country",
+              "description": "Country of origin of websites used for screening. Increases accuracy."
+            },
+            {
+              "name": "media_only",
+              "type": "boolean",
+              "optional": true,
+              "title": "Media Only",
+              "description": "Restrict analysis to internet media.",
+              "default": false
+            },
+            {
+              "name": "force_recreate",
+              "type": "boolean",
+              "optional": true,
+              "title": "Force Recreate",
+              "description": "Bypass cache and refresh all response parts.",
+              "default": false
+            }
+          ]
+        },
+        {
+          "id": "rpo",
+          "name": "RPO Organization Search (Slovakia only)",
+          "description": "Finds Slovak organizations in RPO/ORSR registry. Automatically fetches business subjects for each found organization. Slovakia only.",
+          "function": "rpoSearch",
+          "inputs": [
+            {
+              "name": "target",
+              "type": "string",
+              "optional": false,
+              "title": "Target Name",
+              "description": "Name of person or company to search in RPO."
+            },
+            {
+              "name": "force_recreate",
+              "type": "boolean",
+              "optional": true,
+              "title": "Force Recreate",
+              "description": "Bypass cache and refresh all response parts.",
+              "default": false
+            }
+          ]
+        },
+        {
+          "id": "debtors",
+          "name": "Debtors Check (Slovakia only)",
+          "description": "Checks publicly available debtor registries (health insurance, tax authority, etc.) for the target. Slovakia only.",
+          "function": "debtorCheck",
+          "inputs": [
+            {
+              "name": "target",
+              "type": "string",
+              "optional": false,
+              "title": "Target Name",
+              "description": "Name of person or company to screen in debtor lists."
+            },
+            {
+              "name": "force_recreate",
+              "type": "boolean",
+              "optional": true,
+              "title": "Force Recreate",
+              "description": "Bypass cache and refresh all response parts.",
+              "default": false
+            }
+          ]
+        },
+        {
+          "id": "default-entity-recognition",
+          "name": "Default Entity Recognition",
+          "description": "Extracts related entities (people, companies) from search results for the target name. Useful for discovering connections.",
+          "function": "defaultEntityRecognition",
+          "inputs": [
+            {
+              "name": "target",
+              "type": "string",
+              "optional": false,
+              "title": "Target Name",
+              "description": "Name of person or company for entity extraction."
+            },
+            {
+              "name": "output_language",
+              "type": {
+                "name": "enum",
+                "values": [
+                  "English",
+                  "Slovak"
+                ]
+              },
+              "optional": true,
+              "title": "Output Language",
+              "description": "Language for generated output.",
+              "default": "English"
+            },
+            {
+              "name": "country",
+              "type": {
+                "name": "enum",
+                "values": [
+                  "usa",
+                  "australia",
+                  "new_zealand",
+                  "great_britain",
+                  "germany",
+                  "czechia",
+                  "slovakia",
+                  "italy",
+                  "austria",
+                  "belgium",
+                  "bulgaria",
+                  "croatia",
+                  "cyprus",
+                  "denmark",
+                  "estonia",
+                  "finland",
+                  "france",
+                  "greece",
+                  "hungary",
+                  "ireland",
+                  "latvia",
+                  "lithuania",
+                  "luxembourg",
+                  "malta",
+                  "netherlands",
+                  "poland",
+                  "portugal",
+                  "romania",
+                  "slovenia",
+                  "spain",
+                  "sweden"
+                ]
+              },
+              "optional": true,
+              "title": "Country",
+              "description": "Country of origin of websites used for screening. Increases accuracy."
+            },
+            {
+              "name": "force_recreate",
+              "type": "boolean",
+              "optional": true,
+              "title": "Force Recreate",
+              "description": "Bypass cache and refresh all response parts.",
+              "default": false
+            }
+          ]
+        }
+      ],
+      "icon": "icon.png"
+    },
+    {
+      "path": "opencorporates/0.1.0/plugin.json",
+      "versions": [
+        "0.1.0"
+      ],
+      "id": "opencorporates",
+      "version": "0.1.0",
+      "name": "OpenCorporates by OpenRiskPlatform",
+      "description": "Searches companies and officers in OpenCorporates and returns normalized OpenRisk entities.",
+      "authors": [
+        {
+          "name": "OpenRiskPlatform",
+          "email": "simemail@gmail.com"
+        }
+      ],
+      "license": "MIT",
+      "main": "index.ts",
+      "entrypoints": [
+        {
+          "id": "companies",
+          "name": "Company Search",
+          "description": "Searches OpenCorporates companies and returns organization entities.",
+          "function": "searchCompanies",
+          "inputs": [
+            {
+              "name": "search_input",
+              "type": "string",
+              "optional": false,
+              "title": "Search Input",
+              "description": "Free-text company or officer name to search in OpenCorporates."
+            },
+            {
+              "name": "jurisdiction_code",
+              "type": "string",
+              "optional": true,
+              "title": "Jurisdiction Code",
+              "description": "Optional OpenCorporates jurisdiction code such as gb, us_de, or sk."
+            },
+            {
+              "name": "limit",
+              "type": "number",
+              "optional": true,
+              "title": "Result Limit",
+              "description": "Maximum number of results to request per search.",
+              "default": 5
+            },
+            {
+              "name": "inactive",
+              "type": "boolean",
+              "optional": true,
+              "title": "Inactive Filter",
+              "description": "If true, only inactive records are returned. If false, inactive records are excluded. If omitted, OpenCorporates default behavior is used."
+            }
+          ]
+        },
+        {
+          "id": "officers",
+          "name": "Officer Search",
+          "description": "Searches OpenCorporates officers and returns person entities.",
+          "function": "searchOfficers",
+          "inputs": [
+            {
+              "name": "search_input",
+              "type": "string",
+              "optional": false,
+              "title": "Search Input",
+              "description": "Free-text company or officer name to search in OpenCorporates."
+            },
+            {
+              "name": "jurisdiction_code",
+              "type": "string",
+              "optional": true,
+              "title": "Jurisdiction Code",
+              "description": "Optional OpenCorporates jurisdiction code such as gb, us_de, or sk."
+            },
+            {
+              "name": "limit",
+              "type": "number",
+              "optional": true,
+              "title": "Result Limit",
+              "description": "Maximum number of results to request per search.",
+              "default": 5
+            },
+            {
+              "name": "inactive",
+              "type": "boolean",
+              "optional": true,
+              "title": "Inactive Filter",
+              "description": "If true, only inactive records are returned. If false, inactive records are excluded. If omitted, OpenCorporates default behavior is used."
+            }
+          ]
+        }
+      ]
+    },
     {
       "path": "opensanctions/0.1.0/plugin.json",
       "versions": [
