@@ -1,10 +1,11 @@
 {
   "$schema": "TODO",
-  "generatedAt": "2026-04-11T03:28:27Z",
+  "generatedAt": "2026-04-11T03:39:57Z",
   "plugins": [
     {
-      "path": "adversea/0.1.9/plugin.json",
+      "path": "adversea/0.1.10/plugin.json",
       "versions": [
+        "0.1.10",
         "0.1.9",
         "0.1.8",
         "0.1.7",
@@ -12,7 +13,7 @@
         "0.1.5"
       ],
       "id": "adversea",
-      "version": "0.1.9",
+      "version": "0.1.10",
       "name": "Adversea",
       "description": "Full Adversea integration covering all documented screening, entity recognition, and account endpoints.",
       "authors": [
