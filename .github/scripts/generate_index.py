@@ -19,7 +19,6 @@ The script:
 
 import datetime
 import json
-import os
 import re
 import sys
 from collections import defaultdict
@@ -67,9 +66,9 @@ def latest_version(versions: list[str]) -> str:
 # ---------------------------------------------------------------------------
 
 def should_skip(path: Path) -> bool:
-    """Skip paths that pass through hidden dirs, node_modules, or 'latest'."""
+    """Skip paths that pass through hidden dirs or node_modules."""
     for part in path.relative_to(ROOT).parts[:-1]:
-        if part.startswith(".") or part in SKIP_DIRS or part == "latest":
+        if part.startswith(".") or part in SKIP_DIRS:
             return True
     return False
 
@@ -100,24 +99,6 @@ def find_versioned_manifests() -> dict[Path, list[str]]:
 
 
 # ---------------------------------------------------------------------------
-# Symlink management
-# ---------------------------------------------------------------------------
-
-def update_latest_symlink(plugin_dir: Path, target_version: str) -> bool:
-    """Create or update plugin_dir/latest -> target_version. Returns True if changed."""
-    link = plugin_dir / "latest"
-    if link.is_symlink():
-        if os.readlink(link) == target_version:
-            return False
-        link.unlink()
-    elif link.exists():
-        raise RuntimeError(f"{link} exists and is not a symlink – refusing to overwrite.")
-    os.symlink(target_version, link)
-    print(f"  symlink {link.relative_to(ROOT)} -> {target_version}", flush=True)
-    return True
-
-
-# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -134,7 +115,6 @@ def main() -> None:
         all_versions = sorted(versions, key=_semver_key, reverse=True)
 
         print(f"Plugin {plugin_dir.name}: versions={all_versions}, latest={best}", flush=True)
-        update_latest_symlink(plugin_dir, best)
 
         manifest_path = plugin_dir / best / "plugin.json"
         try:
@@ -144,7 +124,7 @@ def main() -> None:
             continue
 
         entry = {
-            "path": (plugin_dir / "latest" / "plugin.json").relative_to(ROOT).as_posix(),
+            "path": manifest_path.relative_to(ROOT).as_posix(),
             "versions": all_versions,
         }
         for key in KEYS:
