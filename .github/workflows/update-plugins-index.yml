@@ -19,14 +19,16 @@ jobs:
       - name: Generate plugins.json
         run: python3 .github/scripts/generate_index.py
 
-      - name: Commit plugins.json
+      - name: Commit index and symlinks
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Stage plugins.json and any created/updated `latest` symlinks
           git add plugins.json
+          git add $(git ls-files --others --modified --exclude-standard -- '*/latest') 2>/dev/null || true
           # Only commit when something actually changed
           if git diff --cached --quiet; then
-            echo "plugins.json is up to date – nothing to commit."
+            echo "Everything is up to date – nothing to commit."
           else
             git commit -m "chore: update plugins.json index [skip ci]"
             git push
