@@ -1,6 +1,6 @@
 {
   "$schema": "TODO",
-  "generatedAt": "2026-04-11T03:39:57Z",
+  "generatedAt": "2026-04-14T21:12:07Z",
   "plugins": [
     {
       "path": "adversea/0.1.10/plugin.json",
@@ -380,12 +380,13 @@
       "icon": "icon.png"
     },
     {
-      "path": "opencorporates/0.1.0/plugin.json",
+      "path": "opencorporates/0.1.1/plugin.json",
       "versions": [
+        "0.1.1",
         "0.1.0"
       ],
       "id": "opencorporates",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "name": "OpenCorporates by OpenRiskPlatform",
       "description": "Searches companies and officers in OpenCorporates and returns normalized OpenRisk entities.",
       "authors": [
@@ -422,8 +423,8 @@
               "type": "number",
               "optional": true,
               "title": "Result Limit",
-              "description": "Maximum number of results to request per search.",
-              "default": 5
+              "description": "Total number of entities to return across paginated API requests (1-200).",
+              "default": 50
             },
             {
               "name": "inactive",
@@ -459,8 +460,8 @@
               "type": "number",
               "optional": true,
               "title": "Result Limit",
-              "description": "Maximum number of results to request per search.",
-              "default": 5
+              "description": "Total number of entities to return across paginated API requests (1-200).",
+              "default": 50
             },
             {
               "name": "inactive",
@@ -474,14 +475,15 @@
       ]
     },
     {
-      "path": "opensanctions/0.1.0/plugin.json",
+      "path": "opensanctions/0.1.1/plugin.json",
       "versions": [
+        "0.1.1",
         "0.1.0"
       ],
       "id": "opensanctions",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "name": "OpenSanctions by OpenRiskPlatform",
-      "description": "Matches a person name against OpenSanctions and returns normalized person entities.",
+      "description": "Matches a person name against OpenSanctions and returns normalized entities with scoring metadata.",
       "authors": [
         {
           "name": "Illia Chaban",
@@ -498,7 +500,7 @@
         {
           "id": "match-persons",
           "name": "Match Persons",
-          "description": "Matches a person name against OpenSanctions and returns normalized person entities.",
+          "description": "Matches a person name against OpenSanctions and returns normalized entities.",
           "function": "matchPersons",
           "inputs": [
             {
@@ -507,6 +509,30 @@
               "optional": false,
               "title": "Search Input",
               "description": "Free-text person name to match against OpenSanctions."
+            },
+            {
+              "name": "dataset",
+              "type": "string",
+              "optional": true,
+              "title": "Dataset Scope",
+              "description": "OpenSanctions dataset scope, e.g. default, sanctions, peps.",
+              "default": "default"
+            },
+            {
+              "name": "limit",
+              "type": "number",
+              "optional": true,
+              "title": "Result Limit",
+              "description": "Maximum number of matches requested from OpenSanctions (1-500).",
+              "default": 50
+            },
+            {
+              "name": "threshold",
+              "type": "number",
+              "optional": true,
+              "title": "Score Threshold",
+              "description": "Lower score bound for returned matches (0.0-1.0).",
+              "default": 0.7
             }
           ]
         }
