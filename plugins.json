@@ -1,6 +1,6 @@
 {
   "$schema": "TODO",
-  "generatedAt": "2026-04-14T21:12:07Z",
+  "generatedAt": "2026-04-14T21:20:34Z",
   "plugins": [
     {
       "path": "adversea/0.1.10/plugin.json",
