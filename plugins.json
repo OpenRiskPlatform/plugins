@@ -1,10 +1,11 @@
 {
   "$schema": "TODO",
-  "generatedAt": "2026-04-14T21:20:34Z",
+  "generatedAt": "2026-04-17T15:08:06Z",
   "plugins": [
     {
-      "path": "adversea/0.1.10/plugin.json",
+      "path": "adversea/0.2.0/plugin.json",
       "versions": [
+        "0.2.0",
         "0.1.10",
         "0.1.9",
         "0.1.8",
@@ -13,7 +14,7 @@
         "0.1.5"
       ],
       "id": "adversea",
-      "version": "0.1.10",
+      "version": "0.2.0",
       "name": "Adversea",
       "description": "Full Adversea integration covering all documented screening, entity recognition, and account endpoints.",
       "authors": [
@@ -380,13 +381,14 @@
       "icon": "icon.png"
     },
     {
-      "path": "opencorporates/0.1.1/plugin.json",
+      "path": "opencorporates/0.2.0/plugin.json",
       "versions": [
+        "0.2.0",
         "0.1.1",
         "0.1.0"
       ],
       "id": "opencorporates",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "name": "OpenCorporates by OpenRiskPlatform",
       "description": "Searches companies and officers in OpenCorporates and returns normalized OpenRisk entities.",
       "authors": [
@@ -475,13 +477,14 @@
       ]
     },
     {
-      "path": "opensanctions/0.1.1/plugin.json",
+      "path": "opensanctions/0.2.0/plugin.json",
       "versions": [
+        "0.2.0",
         "0.1.1",
         "0.1.0"
       ],
       "id": "opensanctions",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "name": "OpenSanctions by OpenRiskPlatform",
       "description": "Matches a person name against OpenSanctions and returns normalized entities with scoring metadata.",
       "authors": [
