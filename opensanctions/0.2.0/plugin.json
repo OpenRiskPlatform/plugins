@@ -1,0 +1,102 @@
+{
+  "$schema": "../../schemas/plugin-manifest.schema.json",
+  "id": "opensanctions",
+  "version": "0.2.0",
+  "name": "OpenSanctions by OpenRiskPlatform",
+  "description": "Matches a person name against OpenSanctions and returns normalized entities with scoring metadata.",
+  "license": "MIT",
+  "main": "index.ts",
+  "authors": [
+    {
+      "name": "Illia Chaban",
+      "email": "ic-it@mail.com"
+    },
+    {
+      "name": "Mykhailo Sichkaruk",
+      "email": "NA@NA.NA"
+    }
+  ],
+  "entrypoints": [
+    {
+      "id": "match-persons",
+      "name": "Match Persons",
+      "description": "Matches a person name against OpenSanctions and returns normalized entities.",
+      "function": "matchPersons",
+      "inputs": [
+        {
+          "name": "search_input",
+          "type": "string",
+          "optional": false,
+          "title": "Search Input",
+          "description": "Free-text person name to match against OpenSanctions."
+        },
+        {
+          "name": "dataset",
+          "type": "string",
+          "optional": true,
+          "title": "Dataset Scope",
+          "description": "OpenSanctions dataset scope, e.g. default, sanctions, peps.",
+          "default": "default"
+        },
+        {
+          "name": "limit",
+          "type": "number",
+          "optional": true,
+          "title": "Result Limit",
+          "description": "Maximum number of matches requested from OpenSanctions (1-500).",
+          "default": 50
+        },
+        {
+          "name": "threshold",
+          "type": "number",
+          "optional": true,
+          "title": "Score Threshold",
+          "description": "Lower score bound for returned matches (0.0-1.0).",
+          "default": 0.7
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "name": "token",
+      "type": "string",
+      "title": "OpenSanctions API Token",
+      "description": "API token used for authenticated requests to OpenSanctions.",
+      "required": true,
+      "default": null
+    }
+  ],
+  "metrics": [
+    {
+      "name": "status",
+      "type": "string",
+      "title": "Status",
+      "description": "Short summary of the estimated OpenSanctions API cost for the current run."
+    },
+    {
+      "name": "result_count",
+      "type": "integer",
+      "title": "Result Count",
+      "description": "Number of normalized entities returned by the entrypoint."
+    },
+    {
+      "name": "api_total_count",
+      "type": "integer",
+      "title": "API Total Count",
+      "description": "Total number of matches reported by OpenSanctions for the query."
+    },
+    {
+      "name": "requested_limit",
+      "type": "integer",
+      "title": "Requested Limit",
+      "description": "Requested OpenSanctions limit value for the query."
+    },
+    {
+      "name": "last_status_code",
+      "type": "integer",
+      "title": "Last HTTP Status",
+      "description": "HTTP status code from the last OpenSanctions API request."
+    }
+  ]
+}
