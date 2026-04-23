@@ -1,0 +1,231 @@
+{
+    "$schema": "../../schemas/plugin-manifest.schema.json",
+    "id": "adversea",
+    "version": "0.2.1",
+    "name": "Adversea",
+    "description": "Adversea screening integration for PEP/sanctions, topic reports, and unit analysis.",
+    "authors": [
+        {
+            "name": "OpenRiskPlatform",
+            "email": "example@openrisk.platform"
+        }
+    ],
+    "icon": "icon.png",
+    "license": "MIT",
+    "main": "index.ts",
+    "entrypoints": [
+        {
+            "id": "pep-sanctions",
+            "name": "PEP & Sanctions Check",
+            "description": "Checks PEP exposure and active sanctions datasets for the target name.",
+            "function": "pepSanctionsCheck",
+            "inputs": [
+                {
+                    "name": "target",
+                    "type": "string",
+                    "optional": false,
+                    "title": "Target Name",
+                    "description": "Full name of the person or organization to screen."
+                },
+                {
+                    "name": "force_recreate",
+                    "type": "boolean",
+                    "optional": true,
+                    "title": "Force Recreate",
+                    "description": "Bypass cache and refresh all response parts.",
+                    "default": false
+                }
+            ]
+        },
+        {
+            "id": "topic-report",
+            "name": "Topic Report",
+            "description": "Adverse media analysis grouped by risk topics.",
+            "function": "topicReport",
+            "inputs": [
+                {
+                    "name": "target",
+                    "type": "string",
+                    "optional": false,
+                    "title": "Target Name",
+                    "description": "Full name of the person or organization to screen."
+                },
+                {
+                    "name": "output_language",
+                    "type": {
+                        "name": "enum",
+                        "values": [
+                            "English",
+                            "Slovak"
+                        ]
+                    },
+                    "optional": true,
+                    "title": "Output Language",
+                    "description": "Language for generated text output.",
+                    "default": "English"
+                },
+                {
+                    "name": "country",
+                    "type": {
+                        "name": "enum",
+                        "values": [
+                            "usa",
+                            "australia",
+                            "new_zealand",
+                            "great_britain",
+                            "germany",
+                            "czechia",
+                            "slovakia",
+                            "italy",
+                            "austria",
+                            "belgium",
+                            "bulgaria",
+                            "croatia",
+                            "cyprus",
+                            "denmark",
+                            "estonia",
+                            "finland",
+                            "france",
+                            "greece",
+                            "hungary",
+                            "ireland",
+                            "latvia",
+                            "lithuania",
+                            "luxembourg",
+                            "malta",
+                            "netherlands",
+                            "poland",
+                            "portugal",
+                            "romania",
+                            "slovenia",
+                            "spain",
+                            "sweden"
+                        ]
+                    },
+                    "optional": true,
+                    "title": "Country",
+                    "description": "Country of origin of websites used for screening. Increases accuracy."
+                },
+                {
+                    "name": "force_recreate",
+                    "type": "boolean",
+                    "optional": true,
+                    "title": "Force Recreate",
+                    "description": "Bypass cache and refresh all response parts.",
+                    "default": false
+                }
+            ]
+        },
+        {
+            "id": "unit-analysis",
+            "name": "Unit Analysis",
+            "description": "Analyzes search engine results for each URL. Mode text returns concise text; mode claims returns atomic facts.",
+            "function": "unitAnalysis",
+            "inputs": [
+                {
+                    "name": "target",
+                    "type": "string",
+                    "optional": false,
+                    "title": "Target Name",
+                    "description": "Name of the screened person or company."
+                },
+                {
+                    "name": "mode",
+                    "type": {
+                        "name": "enum",
+                        "values": [
+                            "text",
+                            "claims"
+                        ]
+                    },
+                    "optional": true,
+                    "title": "Mode",
+                    "description": "text = concise analysis per URL; claims = atomic facts per URL.",
+                    "default": "text"
+                },
+                {
+                    "name": "output_language",
+                    "type": {
+                        "name": "enum",
+                        "values": [
+                            "English",
+                            "Slovak"
+                        ]
+                    },
+                    "optional": true,
+                    "title": "Output Language",
+                    "description": "Language for generated text.",
+                    "default": "English"
+                },
+                {
+                    "name": "country",
+                    "type": {
+                        "name": "enum",
+                        "values": [
+                            "usa",
+                            "australia",
+                            "new_zealand",
+                            "great_britain",
+                            "germany",
+                            "czechia",
+                            "slovakia",
+                            "italy",
+                            "austria",
+                            "belgium",
+                            "bulgaria",
+                            "croatia",
+                            "cyprus",
+                            "denmark",
+                            "estonia",
+                            "finland",
+                            "france",
+                            "greece",
+                            "hungary",
+                            "ireland",
+                            "latvia",
+                            "lithuania",
+                            "luxembourg",
+                            "malta",
+                            "netherlands",
+                            "poland",
+                            "portugal",
+                            "romania",
+                            "slovenia",
+                            "spain",
+                            "sweden"
+                        ]
+                    },
+                    "optional": true,
+                    "title": "Country",
+                    "description": "Country of origin of websites used for screening. Increases accuracy."
+                },
+                {
+                    "name": "media_only",
+                    "type": "boolean",
+                    "optional": true,
+                    "title": "Media Only",
+                    "description": "Restrict analysis to internet media.",
+                    "default": false
+                },
+                {
+                    "name": "force_recreate",
+                    "type": "boolean",
+                    "optional": true,
+                    "title": "Force Recreate",
+                    "description": "Bypass cache and refresh all response parts.",
+                    "default": false
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "name": "api_key",
+            "type": "string",
+            "title": "Adversea API Key",
+            "description": "Your Adversea API key (X-Adversea-Api-Key header).",
+            "required": true,
+            "default": null
+        }
+    ]
+}

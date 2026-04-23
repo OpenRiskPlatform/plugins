@@ -1,10 +1,11 @@
 {
   "$schema": "TODO",
-  "generatedAt": "2026-04-17T15:08:06Z",
+  "generatedAt": "2026-04-23T13:20:43Z",
   "plugins": [
     {
-      "path": "adversea/0.2.0/plugin.json",
+      "path": "adversea/0.2.1/plugin.json",
       "versions": [
+        "0.2.1",
         "0.2.0",
         "0.1.10",
         "0.1.9",
@@ -14,9 +15,9 @@
         "0.1.5"
       ],
       "id": "adversea",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "name": "Adversea",
-      "description": "Full Adversea integration covering all documented screening, entity recognition, and account endpoints.",
+      "description": "Adversea screening integration for PEP/sanctions, topic reports, and unit analysis.",
       "authors": [
         {
           "name": "OpenRiskPlatform",
@@ -129,29 +130,6 @@
           ]
         },
         {
-          "id": "social-media",
-          "name": "Social Media",
-          "description": "Finds public social media profiles matching the target name.",
-          "function": "socialMediaCheck",
-          "inputs": [
-            {
-              "name": "target",
-              "type": "string",
-              "optional": false,
-              "title": "Target Name",
-              "description": "Full name of the person or organization to screen."
-            },
-            {
-              "name": "force_recreate",
-              "type": "boolean",
-              "optional": true,
-              "title": "Force Recreate",
-              "description": "Bypass cache and refresh all response parts.",
-              "default": false
-            }
-          ]
-        },
-        {
           "id": "unit-analysis",
           "name": "Unit Analysis",
           "description": "Analyzes search engine results for each URL. Mode text returns concise text; mode claims returns atomic facts.",
@@ -241,131 +219,6 @@
               "title": "Media Only",
               "description": "Restrict analysis to internet media.",
               "default": false
-            },
-            {
-              "name": "force_recreate",
-              "type": "boolean",
-              "optional": true,
-              "title": "Force Recreate",
-              "description": "Bypass cache and refresh all response parts.",
-              "default": false
-            }
-          ]
-        },
-        {
-          "id": "rpo",
-          "name": "RPO Organization Search (Slovakia only)",
-          "description": "Finds Slovak organizations in RPO/ORSR registry. Automatically fetches business subjects for each found organization. Slovakia only.",
-          "function": "rpoSearch",
-          "inputs": [
-            {
-              "name": "target",
-              "type": "string",
-              "optional": false,
-              "title": "Target Name",
-              "description": "Name of person or company to search in RPO."
-            },
-            {
-              "name": "force_recreate",
-              "type": "boolean",
-              "optional": true,
-              "title": "Force Recreate",
-              "description": "Bypass cache and refresh all response parts.",
-              "default": false
-            }
-          ]
-        },
-        {
-          "id": "debtors",
-          "name": "Debtors Check (Slovakia only)",
-          "description": "Checks publicly available debtor registries (health insurance, tax authority, etc.) for the target. Slovakia only.",
-          "function": "debtorCheck",
-          "inputs": [
-            {
-              "name": "target",
-              "type": "string",
-              "optional": false,
-              "title": "Target Name",
-              "description": "Name of person or company to screen in debtor lists."
-            },
-            {
-              "name": "force_recreate",
-              "type": "boolean",
-              "optional": true,
-              "title": "Force Recreate",
-              "description": "Bypass cache and refresh all response parts.",
-              "default": false
-            }
-          ]
-        },
-        {
-          "id": "default-entity-recognition",
-          "name": "Default Entity Recognition",
-          "description": "Extracts related entities (people, companies) from search results for the target name. Useful for discovering connections.",
-          "function": "defaultEntityRecognition",
-          "inputs": [
-            {
-              "name": "target",
-              "type": "string",
-              "optional": false,
-              "title": "Target Name",
-              "description": "Name of person or company for entity extraction."
-            },
-            {
-              "name": "output_language",
-              "type": {
-                "name": "enum",
-                "values": [
-                  "English",
-                  "Slovak"
-                ]
-              },
-              "optional": true,
-              "title": "Output Language",
-              "description": "Language for generated output.",
-              "default": "English"
-            },
-            {
-              "name": "country",
-              "type": {
-                "name": "enum",
-                "values": [
-                  "usa",
-                  "australia",
-                  "new_zealand",
-                  "great_britain",
-                  "germany",
-                  "czechia",
-                  "slovakia",
-                  "italy",
-                  "austria",
-                  "belgium",
-                  "bulgaria",
-                  "croatia",
-                  "cyprus",
-                  "denmark",
-                  "estonia",
-                  "finland",
-                  "france",
-                  "greece",
-                  "hungary",
-                  "ireland",
-                  "latvia",
-                  "lithuania",
-                  "luxembourg",
-                  "malta",
-                  "netherlands",
-                  "poland",
-                  "portugal",
-                  "romania",
-                  "slovenia",
-                  "spain",
-                  "sweden"
-                ]
-              },
-              "optional": true,
-              "title": "Country",
-              "description": "Country of origin of websites used for screening. Increases accuracy."
             },
             {
               "name": "force_recreate",
