@@ -1,6 +1,6 @@
 {
   "$schema": "TODO",
-  "generatedAt": "2026-04-23T13:25:26Z",
+  "generatedAt": "2026-05-04T13:15:00Z",
   "plugins": [
     {
       "path": "adversea/0.2.1/plugin.json",
@@ -234,14 +234,15 @@
       "icon": "icon.png"
     },
     {
-      "path": "opencorporates/0.2.0/plugin.json",
+      "path": "opencorporates/0.3.0/plugin.json",
       "versions": [
+        "0.3.0",
         "0.2.0",
         "0.1.1",
         "0.1.0"
       ],
       "id": "opencorporates",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "name": "OpenCorporates by OpenRiskPlatform",
       "description": "Searches companies and officers in OpenCorporates and returns normalized OpenRisk entities.",
       "authors": [
@@ -268,7 +269,9 @@
             },
             {
               "name": "jurisdiction_code",
-              "type": "string",
+              "type": {
+                "name": "jurisdiction-iso-3166-2"
+              },
               "optional": true,
               "title": "Jurisdiction Code",
               "description": "Optional OpenCorporates jurisdiction code such as gb, us_de, or sk."
@@ -305,7 +308,9 @@
             },
             {
               "name": "jurisdiction_code",
-              "type": "string",
+              "type": {
+                "name": "jurisdiction-iso-3166-2"
+              },
               "optional": true,
               "title": "Jurisdiction Code",
               "description": "Optional OpenCorporates jurisdiction code such as gb, us_de, or sk."
