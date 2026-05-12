@@ -224,7 +224,7 @@
             "name": "api_key",
             "type": "string",
             "title": "Adversea API Key",
-            "description": "Your Adversea API key (X-Adversea-Api-Key header).",
+            "description": "Your Adversea API key (X-Adversea-Api-Key header). See more on getting an API token: https://adversea.com/en.",
             "secret": true,
             "required": true,
             "default": null
