@@ -98,7 +98,7 @@
       "name": "token",
       "type": "string",
       "title": "OpenCorporates API Token",
-      "description": "API token used for authenticated requests to OpenCorporates.",
+      "description": "API token used for authenticated requests to OpenCorporates. See more on getting an API token: https://api.opencorporates.com/documentation/API-Reference#api-accounts.",
       "secret": true,
       "required": true,
       "default": null

@@ -62,7 +62,7 @@
       "name": "token",
       "type": "string",
       "title": "OpenSanctions API Token",
-      "description": "API token used for authenticated requests to OpenSanctions.",
+      "description": "API token used for authenticated requests to OpenSanctions. See more on getting an API key: https://www.opensanctions.org/api/.",
       "secret": true,
       "required": true,
       "default": null
