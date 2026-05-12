@@ -1,4 +1,4 @@
-import searchCompanies, { searchOfficers } from "./index.ts";
+import { searchCompanies, searchOfficers } from "./index.ts";
 
 function requireToken(): string {
   const token = Deno.env.get("OPENCORPORATES_TOKEN")?.trim();

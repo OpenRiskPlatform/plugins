@@ -33,7 +33,7 @@ interface BusinessSubject {
   effectiveTo?: string;
 }
 
-const OPENRISK_JURISDICTION_ISO_3166_2_CODES = [
+const OPENRISK_REGISTRY_JURISDICTION_CODES = [
   "ae_az", "ae_du", "al", "au", "aw", "bb", "bd", "be", "bg", "bh", "bl",
   "bm", "bo", "br", "bs", "by", "bz", "ca", "ca_bc", "ca_nb", "ca_nl",
   "ca_ns", "ca_nu", "ca_on", "ca_pe", "ca_qc", "ch", "cw", "cy", "cz", "de",
@@ -51,11 +51,11 @@ const OPENRISK_JURISDICTION_ISO_3166_2_CODES = [
   "us_wi", "us_wv", "us_wy", "vn", "vu", "wf", "yt", "za",
 ] as const;
 
-type JurisdictionIso31662Code =
-  typeof OPENRISK_JURISDICTION_ISO_3166_2_CODES[number];
+type RegistryJurisdictionCode =
+  typeof OPENRISK_REGISTRY_JURISDICTION_CODES[number];
 
-const OPENRISK_JURISDICTION_ISO_3166_2_SET = new Set<string>(
-  OPENRISK_JURISDICTION_ISO_3166_2_CODES,
+const OPENRISK_REGISTRY_JURISDICTION_SET = new Set<string>(
+  OPENRISK_REGISTRY_JURISDICTION_CODES,
 );
 
 interface PersonPayload {
@@ -63,7 +63,7 @@ interface PersonPayload {
   aliases?: string[];
   birthDate?: string;
   nationalities?: string[];
-  jurisdiction?: JurisdictionIso31662Code;
+  jurisdiction?: RegistryJurisdictionCode;
   addresses?: string[];
   notes?: string;
 }
@@ -74,7 +74,7 @@ interface OrganizationPayload {
   previousNames?: string[];
   registrationId?: string;
   country?: string;
-  jurisdiction?: JurisdictionIso31662Code;
+  jurisdiction?: RegistryJurisdictionCode;
   address?: string;
   status?: "active" | "inactive" | "unknown";
   legalRoles?: string[];
@@ -95,8 +95,8 @@ const _tv = {
   str: (v: string): TypedValue<string> => ({ $type: "string", value: v }),
   num: (v: number): TypedValue<number> => ({ $type: "number", value: v }),
   bool: (v: boolean): TypedValue<boolean> => ({ $type: "boolean", value: v }),
-  jurisdiction: (v: JurisdictionIso31662Code): TypedValue<JurisdictionIso31662Code> => ({
-    $type: "jurisdiction-iso-3166-2",
+  jurisdiction: (v: RegistryJurisdictionCode): TypedValue<RegistryJurisdictionCode> => ({
+    $type: "registry-jurisdiction-code",
     value: v,
   }),
   addr: (v: string): TypedValue<string> => ({ $type: "address", value: v }),
@@ -459,13 +459,13 @@ function uniqueStrings(values: Array<string | undefined | null>): string[] {
 
 function normalizeJurisdictionCode(
   value?: string | null,
-): JurisdictionIso31662Code | undefined {
+): RegistryJurisdictionCode | undefined {
   const normalized = value?.trim().toLowerCase();
-  if (!normalized || !OPENRISK_JURISDICTION_ISO_3166_2_SET.has(normalized)) {
+  if (!normalized || !OPENRISK_REGISTRY_JURISDICTION_SET.has(normalized)) {
     return undefined;
   }
 
-  return normalized as JurisdictionIso31662Code;
+  return normalized as RegistryJurisdictionCode;
 }
 
 function requireSearchInput(inputs: PluginInputs): string {
