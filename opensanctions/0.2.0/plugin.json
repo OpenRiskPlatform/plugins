@@ -63,6 +63,7 @@
       "type": "string",
       "title": "OpenSanctions API Token",
       "description": "API token used for authenticated requests to OpenSanctions.",
+      "secret": true,
       "required": true,
       "default": null
     }

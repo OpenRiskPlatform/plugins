@@ -225,6 +225,7 @@
             "type": "string",
             "title": "Adversea API Key",
             "description": "Your Adversea API key (X-Adversea-Api-Key header).",
+            "secret": true,
             "required": true,
             "default": null
         }

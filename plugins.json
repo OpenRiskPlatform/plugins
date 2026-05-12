@@ -1,6 +1,6 @@
 {
   "$schema": "TODO",
-  "generatedAt": "2026-05-12T15:27:53Z",
+  "generatedAt": "2026-05-12T16:11:07Z",
   "plugins": [
     {
       "path": "adversea/0.2.2/plugin.json",
@@ -235,15 +235,16 @@
       "icon": "icon.png"
     },
     {
-      "path": "opencorporates/0.3.0/plugin.json",
+      "path": "opencorporates/0.3.1/plugin.json",
       "versions": [
+        "0.3.1",
         "0.3.0",
         "0.2.0",
         "0.1.1",
         "0.1.0"
       ],
       "id": "opencorporates",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "name": "OpenCorporates by OpenRiskPlatform",
       "description": "Searches companies and officers in OpenCorporates and returns normalized OpenRisk entities.",
       "authors": [
