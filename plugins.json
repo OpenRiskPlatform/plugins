@@ -1,6 +1,6 @@
 {
   "$schema": "TODO",
-  "generatedAt": "2026-05-07T19:33:31Z",
+  "generatedAt": "2026-05-12T15:27:53Z",
   "plugins": [
     {
       "path": "adversea/0.2.2/plugin.json",
@@ -271,7 +271,7 @@
             {
               "name": "jurisdiction_code",
               "type": {
-                "name": "jurisdiction-iso-3166-2"
+                "name": "registry-jurisdiction-code"
               },
               "optional": true,
               "title": "Jurisdiction Code",
@@ -310,7 +310,7 @@
             {
               "name": "jurisdiction_code",
               "type": {
-                "name": "jurisdiction-iso-3166-2"
+                "name": "registry-jurisdiction-code"
               },
               "optional": true,
               "title": "Jurisdiction Code",
