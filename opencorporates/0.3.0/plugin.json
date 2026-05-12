@@ -30,7 +30,7 @@
         {
           "name": "jurisdiction_code",
           "type": {
-            "name": "jurisdiction-iso-3166-2"
+            "name": "registry-jurisdiction-code"
           },
           "optional": true,
           "title": "Jurisdiction Code",
@@ -69,7 +69,7 @@
         {
           "name": "jurisdiction_code",
           "type": {
-            "name": "jurisdiction-iso-3166-2"
+            "name": "registry-jurisdiction-code"
           },
           "optional": true,
           "title": "Jurisdiction Code",
