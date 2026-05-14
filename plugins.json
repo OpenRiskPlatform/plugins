@@ -1,6 +1,6 @@
 {
   "$schema": "TODO",
-  "generatedAt": "2026-05-12T21:20:43Z",
+  "generatedAt": "2026-05-14T00:06:05Z",
   "plugins": [
     {
       "path": "adversea/0.2.3/plugin.json",
@@ -338,15 +338,16 @@
       ]
     },
     {
-      "path": "opensanctions/0.2.1/plugin.json",
+      "path": "opensanctions/0.2.2/plugin.json",
       "versions": [
+        "0.2.2",
         "0.2.1",
         "0.2.0",
         "0.1.1",
         "0.1.0"
       ],
       "id": "opensanctions",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "name": "OpenSanctions by OpenRiskPlatform",
       "description": "Matches a person name against OpenSanctions and returns normalized entities with scoring metadata.",
       "authors": [
